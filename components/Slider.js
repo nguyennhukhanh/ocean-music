@@ -19,16 +19,16 @@ const listItems = [
 const screenWidth = Dimensions.get('window').width
 const screenHeight = Dimensions.get('window').height
 
-const Slider = () =>{
+const Slider = ({navigation}) =>{
     return(
         <View style={styles.container}>
             <ScrollView
             horizontal={true}
             showsHorizontalScrollIndicator={false}>
-                <View style={styles.touchContainer}>
+                <TouchableOpacity style={styles.touchContainer} onPress={()=>navigation.navigate('Root', { screen: 'FindScreen' })}>
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.touchContainer}>
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>

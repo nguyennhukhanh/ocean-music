@@ -1,18 +1,18 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet} from 'react-native';
 
-const SettingsScreen = ({navigation}) => {
+const ListItem = ({navigation}) => {
     return(
         <View style={styles.container}>
-            <Text>Settings Screen</Text>
+            <Text>ListItem Screen</Text>
             <Button
             title='Click me'
-            onPress={()=>navigation.navigate('Root', { screen: 'FindScreen' })}
+            onPress={()=>navigation.navigate('Root', { screen: 'MyMusic' })}
             />
         </View>
     )
 }
-export default SettingsScreen
+export default ListItem
 
 const styles = StyleSheet.create({
     container:{

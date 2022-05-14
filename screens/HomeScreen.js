@@ -24,7 +24,7 @@ const HomeScreen = ({navigation}) => {
             <ScrollView>
                 <ScrollViews />
                 <Text style={styles.textH1}>Tuyển tập hàng đầu của bạn</Text>
-                <Slider/>
+                <Slider />
                 <Text style={styles.textH1}>Bản phát mới phổ biến nhất</Text>
                 <Slider/>
                 <Text style={styles.textH1}>Mới phát gần đây</Text>
