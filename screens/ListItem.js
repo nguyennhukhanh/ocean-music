@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet} from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
-const ListItem = ({navigation}) => {
-    return(
+const ListItem = ({ navigation, route }) => {
+    return (
         <View style={styles.container}>
-            <Text>ListItem Screen</Text>
+            <Text>ListItem Screen / Màn hình {route.params.category} </Text>
             <Button
-            title='Click me'
-            onPress={()=>navigation.navigate('Root', { screen: 'MyMusic' })}
+                title='Click me'
+                onPress={() => navigation.navigate('Root', { screen: 'MyMusic' })}
             />
         </View>
     )
@@ -15,7 +15,7 @@ const ListItem = ({navigation}) => {
 export default ListItem
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',

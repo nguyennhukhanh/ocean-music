@@ -1,5 +1,6 @@
 import React from "react"
-import {ScrollView, Text, Dimensions, View, Image, StyleSheet, TouchableOpacity} from 'react-native'
+import { ScrollView, Text, Dimensions, View, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 //Database
 const listItems = [
@@ -19,57 +20,63 @@ const listItems = [
 const screenWidth = Dimensions.get('window').width
 const screenHeight = Dimensions.get('window').height
 
-const Slider = ({navigation}) =>{
-    return(
+const Slider = () => {
+    const navigation = useNavigation()
+    return (
         <View style={styles.container}>
             <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}>
-                <TouchableOpacity style={styles.touchContainer} onPress={()=>navigation.navigate('Root', { screen: 'FindScreen' })}>
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}>
+                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('Root', { screen: 'ListItem', params: { category: 1 } })}>
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
                 </TouchableOpacity>
-                <View style={styles.touchContainer}>
+                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('Root', { screen: 'ListItem', params: { category: 2 } })}>
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
-                </View>
-                <View style={styles.touchContainer}>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('Root', { screen: 'ListItem', params: { category: 3 } })}>
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
-                </View>
-                <View style={styles.touchContainer}>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('Root', { screen: 'ListItem', params: { category: 4 } })}>
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
-                </View>
-                <View style={styles.touchContainer}>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('Root', { screen: 'ListItem', params: { category: 5 } })}>
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
-                </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('Root', { screen: 'ListItem', params: { category: 6 } })}>
+                    <Image style={styles.image} source={require('../images/background.jpg')} />
+                    <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
+                </TouchableOpacity>
+
             </ScrollView>
-      </View>
+        </View>
     )
 }
 export default Slider
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         marginTop: 15,
         borderRadius: 5,
         marginHorizontal: 10
     },
-    touchContainer:{
-        height: screenWidth/2.1,
-        width: screenWidth/2.7,
+    touchContainer: {
+        height: screenWidth / 2.1,
+        width: screenWidth / 2.7,
         // backgroundColor: '#f08080',
         borderRadius: 5,
         marginHorizontal: 5
     },
-    image:{
-        height: screenWidth/2.7,
-        width: screenWidth/2.7,
+    image: {
+        height: screenWidth / 2.7,
+        width: screenWidth / 2.7,
         borderRadius: 5
     },
-    text:{
+    text: {
         fontWeight: '500',
         paddingHorizontal: 1
     }

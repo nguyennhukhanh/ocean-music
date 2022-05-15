@@ -8,6 +8,7 @@ import FindScreen from '../screens/FindScreen'
 import LibraryScreeen from '../screens/LibraryScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import MyMusic from '../screens/MyMusic'
+import ListItem from '../screens/ListItem'
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -122,6 +123,7 @@ const Root = () => {
             <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name="FindScreen" component={FindScreen} options={{ headerShown: false }} />
             <Stack.Screen name="LibraryScreeen" component={LibraryScreeen} options={{ headerShown: false }} />
+            <Stack.Screen name="ListItem" component={ListItem} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 }
