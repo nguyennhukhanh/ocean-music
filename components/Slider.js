@@ -51,7 +51,6 @@ const Slider = () => {
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
                 </TouchableOpacity>
-
             </ScrollView>
         </View>
     )
