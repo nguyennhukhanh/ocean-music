@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text, Button, StyleSheet} from 'react-native';
 
 
-const MyMusic = ({navigation}) => {
+const MyMusic = ({navigation, route}) => {
     return(
         <View style={styles.container}>
-            <Text>My Music</Text>
+            <Text>My Music {route.params.idMusic} </Text>
             <Button
             title='Click me'
             onPress={()=>alert('Button Clicked!')}
