@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 
+var lyricSong = 'Tấm thiệp mời trên bàn Thời gian địa điểm rõ ràng Lại một đám mừng ở trong làng Ɲgó tên bỗng dưng thấу hoang mang Rồi ngàу cưới rộn ràng khắp vùng Ai theo chân ai tới già trẻ đi cùng Ɲhiều ngàу tháng giờ nàу tương phùng Mà lòng caу caу caу'
+
 const ListItem = ({ navigation, route, navigation: { goBack } }) => {
     const song = () => {
         return (
-            <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('Root', { screen: 'MyMusic', params: { idMusic: 1, nameMusic: 'Vợ Người Ta' } })}>
+            <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('MyMusic',{ idMusic: 1, nameMusic: 'Vợ Người Ta', author: 'Phan Mạnh Quỳnh', lyricS : lyricSong } )}>
                 <Image style={styles.songImage} source={require('../images/song-background.png')} />
                 <View style={{ marginLeft: -80, justifyContent: 'center' }}>
                     <Text style={{ fontWeight: 'bold', fontSize: 17 }}>Vợ Người Ta</Text>

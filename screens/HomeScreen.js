@@ -21,7 +21,7 @@ const HomeScreen = ({navigation}) => {
     return(
         <SafeAreaView  style={styles.container}>
             {renderHeader()}
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <ScrollViews />
                 <Text style={styles.textH1}>Tuyển tập hàng đầu của bạn</Text>
                 <Slider />

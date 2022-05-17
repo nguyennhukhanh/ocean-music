@@ -27,27 +27,23 @@ const Slider = () => {
             <ScrollView
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}>
-                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('Root', { screen: 'ListItem', params: { category: 1 } })}>
+                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('ListItem', { category: 1 })}>
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('Root', { screen: 'ListItem', params: { category: 2 } })}>
+                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('ListItem', { category: 2 })}>
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('Root', { screen: 'ListItem', params: { category: 3 } })}>
+                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('ListItem', { category: 3 })}>
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('Root', { screen: 'ListItem', params: { category: 4 } })}>
+                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('ListItem', { category: 4 })}>
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('Root', { screen: 'ListItem', params: { category: 5 } })}>
-                    <Image style={styles.image} source={require('../images/background.jpg')} />
-                    <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('Root', { screen: 'ListItem', params: { category: 6 } })}>
+                <TouchableOpacity style={styles.touchContainer} onPress={() => navigation.navigate('ListItem', { category: 5 })}>
                     <Image style={styles.image} source={require('../images/background.jpg')} />
                     <Text style={styles.text}>K-Walker, Sơn Tùng M-TP và hơn thế nữa</Text>
                 </TouchableOpacity>

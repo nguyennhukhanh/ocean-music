@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 
+var lyricSong = 'Yeh yeh yeh Em đang nơi nào Can you feel me (nơi nào nơi nào) Can you feel me (nơi nào nơi nào) Yeh yeh yeh Liệu rằng chia tay trong em có quên được câu ca Tình yêu khi xưa em trao cho anh đâu nào phôi pha Đừng lừa dối con tim anh em sẽ không buông tay anh được đâu mà'
+
 const LibraryScreen = ({ navigation, route, navigation: { goBack } }) => {
     const song = () => {
         return (
-            <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('Root', { screen: 'MyMusic', params: { idMusic: 1, nameMusic: 'Em Của Ngày Hôm Qua' } })}>
+            <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('MyMusic', { idMusic: 1, nameMusic: 'Em Của Ngày Hôm Qua', author: 'Sơn Tùng', lyricS : lyricSong } )}>
                 <Image style={styles.songImage} source={require('../images/emcuangayhomqua.png')} />
                 <View style={{ marginLeft: -50, justifyContent: 'center' }}>
                     <Text style={{ fontWeight: 'bold', fontSize: 17 }}>Em Của Ngày Hôm Qua</Text>
@@ -27,7 +29,7 @@ const LibraryScreen = ({ navigation, route, navigation: { goBack } }) => {
                     <Image style={styles.headerIcon} source={require('../images/share.png')} />
                 </TouchableOpacity>
             </View>
-            <ScrollView style={styles.scrollV}>
+            <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollV}>
                 {song()}
                 {song()}
                 {song()}
