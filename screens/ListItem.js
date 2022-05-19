@@ -1,22 +1,34 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import songs from '../database/Model';
+
+// const random = Math.floor(Math.random() * songs.length);
+// const songK = songs[random]
+// console.log(random, songK)
 
 var lyricSong = 'Tấm thiệp mời trên bàn Thời gian địa điểm rõ ràng Lại một đám mừng ở trong làng Ɲgó tên bỗng dưng thấу hoang mang Rồi ngàу cưới rộn ràng khắp vùng Ai theo chân ai tới già trẻ đi cùng Ɲhiều ngàу tháng giờ nàу tương phùng Mà lòng caу caу caу'
 
 const ListItem = ({ navigation, route, navigation: { goBack } }) => {
+
+
     const song = () => {
-        return (
-            <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('MyMusic',{ idMusic: 1, nameMusic: 'Vợ Người Ta', author: 'Phan Mạnh Quỳnh', lyricS : lyricSong } )}>
-                <Image style={styles.songImage} source={require('../images/song-background.png')} />
-                <View style={{ marginLeft: -80, justifyContent: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 17 }}>Vợ Người Ta</Text>
-                    <Text>Phan Mạnh Quỳnh</Text>
-                </View>
-                <TouchableOpacity>
-                    <Image style={styles.songLike} source={require('../images/heart.png')} />
+        return songs.map((element, index) => {
+            return (
+                <TouchableOpacity key={index} style={styles.item} onPress={() => navigation.navigate('MyMusic', { idMusic: element.id, nameMusic: element.title, author: element.artist, 
+                url: element.url, artwork: element.artwork, lyricS: lyricSong })}>
+                    <Image style={styles.songImage} source={element.artwork} />
+                    <View style={{ justifyContent: 'center', marginLeft: -50 }}>
+                        <Text style={{ fontWeight: 'bold', fontSize: 17, width: 150 }}>{element.title}</Text>
+                        <Text>{element.artist}</Text>
+                    </View>
+                    <TouchableOpacity>
+                        <Image style={styles.songLike} source={require('../images/heart.png')} />
+                    </TouchableOpacity>
                 </TouchableOpacity>
-            </TouchableOpacity>
-        )
+
+
+            )
+        })
     }
     return (
         <View style={styles.container}>
@@ -30,24 +42,9 @@ const ListItem = ({ navigation, route, navigation: { goBack } }) => {
                 </TouchableOpacity>
             </View>
             <ScrollView style={styles.scrollV}>
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
+                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    {song()}
+                </View>
             </ScrollView>
             <Text>ListItem Screen / Màn hình {route.params.category} </Text>
         </View>
@@ -77,10 +74,10 @@ const styles = StyleSheet.create({
     scrollV: {
         flex: 1,
         marginTop: 10,
-
     },
     item: {
         height: 80,
+        width: 370,
         flexDirection: 'row',
         justifyContent: 'space-around',
         // backgroundColor: '#ff7f50',
