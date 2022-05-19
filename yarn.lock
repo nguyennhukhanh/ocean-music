@@ -6360,6 +6360,11 @@
   "resolved" "https://registry.npmjs.org/react-native-audio/-/react-native-audio-4.3.0.tgz"
   "version" "4.3.0"
 
+"react-native-bluetooth-state@^2.0.0":
+  "integrity" "sha1-o4631o4PWXc3XkHiC1AgrifD6AA="
+  "resolved" "https://registry.npmjs.org/react-native-bluetooth-state/-/react-native-bluetooth-state-2.0.0.tgz"
+  "version" "2.0.0"
+
 "react-native-codegen@^0.0.17":
   "integrity" "sha512-7GIEUmAemH9uWwB6iYXNNsPoPgH06pxzGRmdBzK98TgFBdYJZ7CBuZFPMe4jmHQTPOkQazKZ/w5O6/71JBixmw=="
   "resolved" "https://registry.npmjs.org/react-native-codegen/-/react-native-codegen-0.0.17.tgz"

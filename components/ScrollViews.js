@@ -1,5 +1,5 @@
 import React from "react"
-import {ScrollView, Text, Dimensions, View, Image, StyleSheet, TouchableOpacity} from 'react-native'
+import {ScrollView, Text, Dimensions, View, Image, StyleSheet, TouchableOpacity, ToastAndroid} from 'react-native'
 
 //Database
 const listItems = [
@@ -10,7 +10,7 @@ const listItems = [
     },
     {
         id: 2,
-        image: '../images/background.jpg',
+        image: '../images/img2.jpg',
         name: 'Thiên Hạ Nghe Gì'
     }
 ]
@@ -24,12 +24,12 @@ const scrollView = () =>{
         <ScrollView contentContainerStyle={{flex: 1, justifyContent: 'space-around', marginHorizontal: 10}}
         horizontal={true}
         >
-            <TouchableOpacity style={styles.touch} onPress={()=>alert('Bạn muốn nghe nhạc KPop à?')}>
+            <TouchableOpacity style={styles.touch} onPress={()=>{ToastAndroid.show("Chúng tôi đang thêm mới tính năng này trong tương lai 💜", ToastAndroid.SHORT);}}>
                 <Image style={styles.image} source={require('../images/background.jpg')} />
                 <View style={styles.text}><Text>{listItems[0].name}</Text></View>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.touch} onPress={()=>alert('Nhạc thịnh hành hôm nay trống trơn')}>
-                <Image style={styles.image} source={require('../images/background.jpg')} />
+            <TouchableOpacity style={styles.touch} onPress={()=>{ToastAndroid.show("Bạn xếp hạng chưa được cập nhật 💔", ToastAndroid.SHORT);}}>
+                <Image style={styles.image} source={require('../images/img2.jpg')} />
                 <View style={styles.text}><Text>{listItems[1].name}</Text></View>
             </TouchableOpacity>
         </ScrollView>

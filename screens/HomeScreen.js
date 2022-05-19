@@ -31,6 +31,14 @@ const HomeScreen = ({navigation}) => {
                 <Slider/>
                 <Text style={styles.textH1}>Nhạc đang thịnh hành</Text>
                 <Slider/>
+                <Text style={styles.textH1}>Tâm trạng</Text>
+                <Slider/>
+                <Text style={styles.textH1}>Đề xuất cho hôm nay</Text>
+                <Slider/>
+                <Text style={styles.textH1}>Thêm nhạc bạn thích</Text>
+                <Slider/>
+                <Text style={styles.textH1}>Lựa chọn của K-TO Music</Text>
+                <Slider/>
             </ScrollView>
         </SafeAreaView>
     )

@@ -48,6 +48,7 @@ const songs = [
     artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2FEm_c%E1%BB%A7a_ng%C3%A0y_h%C3%B4m_qua.png?alt=media&token=84ee4a3d-34c3-44bf-9a00-089ec3e87dc6'},
     url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2FEmCuaNgayHomQua.mp3?alt=media&token=6cb1c7bd-8434-4bc7-9988-7f3eca1e28f4',
   },
+  
 ];
 
 export default songs;

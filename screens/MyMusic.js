@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Image, ScrollView, Dimensions } from 'react-native';
 import { ProgressBar, Colors } from 'react-native-paper';
-import Model from '../database/Model'
+import BluetoothState from 'react-native-bluetooth-state';
+import songs from '../database/Model'
 import { Audio } from 'expo-av';
 
 const screenWidth = Dimensions.get('window').width
@@ -46,11 +47,55 @@ const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
     async function playSound() {
         console.log('Loading Sound');
         const { sound } = await Audio.Sound.createAsync(
-            {uri: route.params?.url}
-            );
+            { uri: route.params?.url }
+        );
         setSound(sound);
 
         console.log('Playing Sound');
+        await sound.playAsync();
+    }
+
+    async function nextSound() {
+        const result = songs.filter(song => song.id != route.params.idMusic)
+        // console.log(result);
+    
+        const random = Math.floor(Math.random() * songs.length);
+        const song = songs[random]
+        // console.log(random, song)
+    
+        route.params.nameMusic = song.title
+        route.params.author = song.artist
+        route.params.artwork = song.artwork
+
+        console.log('Loading Sound');
+        const { sound } = await Audio.Sound.createAsync(
+            { uri: song.url }
+        );
+        setSound(sound);
+
+        console.log('Next Sound');
+        await sound.playAsync();
+    }
+    
+    async function backSound() {
+        const result = songs.filter(song => song.id != route.params.idMusic)
+        // console.log(result);
+
+        const random = Math.floor(Math.random() * songs.length);
+        const song = songs[random]
+        // console.log(random, song)
+
+        route.params.nameMusic = song.title
+        route.params.author = song.artist
+        route.params.artwork = song.artwork
+
+        console.log('Loading Sound');
+        const { sound } = await Audio.Sound.createAsync(
+            { uri: song.url }
+        );
+        setSound(sound);
+
+        console.log('Back Sound');
         await sound.playAsync();
     }
 
@@ -69,16 +114,16 @@ const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
                 <TouchableOpacity onPress={() => goBack()}>
                     <Image style={styles.headerIcon} source={require('../images/back.png')} />
                 </TouchableOpacity>
-                <Text style={styles.headerText}>{route.params?.nameMusic}</Text>
+                <Text style={styles.headerText}>{route.params.nameMusic}</Text>
                 <TouchableOpacity>
                     <Image style={styles.headerIcon} source={require('../images/menu-dots-vertical.png')} />
                 </TouchableOpacity>
             </View>
             <ScrollView style={styles.scrollV} showsVerticalScrollIndicator={false}>
-                <Image style={styles.songBackground} source={route.params?.artwork} />
+                <Image style={styles.songBackground} source={route.params.artwork} />
                 <TouchableOpacity style={styles.packAge}>
-                    <Text style={styles.song}>{route.params?.nameMusic}</Text>
-                    <Text style={styles.author}>{route.params?.author}</Text>
+                    <Text style={styles.song}>{route.params.nameMusic}</Text>
+                    <Text style={styles.author}>{route.params.author}</Text>
                 </TouchableOpacity>
                 <ProgressBar progress={countingTime} color={Colors.red800} style={{ marginHorizontal: 15, marginTop: 20 }} />
                 <View style={styles.time}>
@@ -86,13 +131,13 @@ const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
                     <Text>{timeEnd}</Text>
                 </View>
                 <View style={styles.process}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={backSound}>
                         <Image style={styles.icon} source={require('../images/rewind.png')} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={playSound}>
                         <Image style={styles.icon} source={require('../images/play.png')} />
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={nextSound}>
                         <Image style={styles.icon} source={require('../images/forward.png')} />
                     </TouchableOpacity>
                 </View>
@@ -106,12 +151,13 @@ const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
                 </View>
                 <View style={styles.lyrics}>
                     <Text style={{ fontWeight: '700', marginBottom: 10, marginHorizontal: 15, marginTop: 10, color: '#fff0f5' }}>Lời bài hát</Text>
-                    <Text style={styles.lyric}>{route.params?.lyricS}</Text>
+                    <Text style={styles.lyric}>{route.params.lyricS}</Text>
                 </View>
             </ScrollView>
         </View>
     )
 }
+
 export default MyMusic
 
 const styles = StyleSheet.create({

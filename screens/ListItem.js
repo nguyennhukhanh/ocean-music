@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { View, Text, ToastAndroid, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import songs from '../database/Model';
 
 // const random = Math.floor(Math.random() * songs.length);
 // const songK = songs[random]
 // console.log(random, songK)
 
-var lyricSong = 'Tấm thiệp mời trên bàn Thời gian địa điểm rõ ràng Lại một đám mừng ở trong làng Ɲgó tên bỗng dưng thấу hoang mang Rồi ngàу cưới rộn ràng khắp vùng Ai theo chân ai tới già trẻ đi cùng Ɲhiều ngàу tháng giờ nàу tương phùng Mà lòng caу caу caу'
+var lyricSong = 'Lời bài hát chưa được cập nhật ! Xin lỗi vì sự bất tiện này ! 💕'
 
 const ListItem = ({ navigation, route, navigation: { goBack } }) => {
 
@@ -14,8 +14,10 @@ const ListItem = ({ navigation, route, navigation: { goBack } }) => {
     const song = () => {
         return songs.map((element, index) => {
             return (
-                <TouchableOpacity key={index} style={styles.item} onPress={() => navigation.navigate('MyMusic', { idMusic: element.id, nameMusic: element.title, author: element.artist, 
-                url: element.url, artwork: element.artwork, lyricS: lyricSong })}>
+                <TouchableOpacity key={index} style={styles.item} onPress={() => navigation.navigate('MyMusic', {
+                    idMusic: element.id, nameMusic: element.title, author: element.artist,
+                    url: element.url, artwork: element.artwork, lyricS: lyricSong
+                })}>
                     <Image style={styles.songImage} source={element.artwork} />
                     <View style={{ justifyContent: 'center', marginLeft: -50 }}>
                         <Text style={{ fontWeight: 'bold', fontSize: 17, width: 150 }}>{element.title}</Text>
@@ -43,10 +45,24 @@ const ListItem = ({ navigation, route, navigation: { goBack } }) => {
             </View>
             <ScrollView style={styles.scrollV}>
                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <Image style={styles.backgound} source={route.params.categorySrc} />
+                </View>
+                <View style={{ marginHorizontal: 40 }}>
+                    <Text style={styles.titleX}>{route.params?.categoryName}</Text>
+                    <Text style={{marginBottom: 5, fontWeight: '600'}}>Tuyển tập 2022</Text>
+                    <View style={{flexDirection: 'row', width: 75, justifyContent: 'space-between'}}>
+                        <TouchableOpacity onPress={()=>{ToastAndroid.show("Bạn đã thả tim bộ sưu tập này !", ToastAndroid.SHORT);}}>
+                            <Image style={{ tintColor: 'red', height: 22, width: 22, marginVertical: 10 }} source={require('../images/heart2.png')} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{alert('Bạn muốn chia sẻ bộ sưu tập này cho ai hả? Xin lỗi, nhưng tính năng này đang cập nhật ! 💖💖💖')}}>
+                            <Image style={{ tintColor: 'red', height: 22, width: 22, marginVertical: 10 }} source={require('../images/menu-dots-vertical.png')} />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                     {song()}
                 </View>
             </ScrollView>
-            <Text>ListItem Screen / Màn hình {route.params.category} </Text>
         </View>
     )
 }
@@ -94,5 +110,15 @@ const styles = StyleSheet.create({
         width: 22,
         marginVertical: 30,
         tintColor: 'black'
+    },
+    backgound: {
+        width: 250,
+        height: 250,
+        borderRadius: 10
+    },
+    titleX: {
+        fontSize: 20,
+        fontWeight: '900',
+        marginVertical: 10
     }
 })

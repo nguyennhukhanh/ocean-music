@@ -1,22 +1,30 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import songs from '../database/Model';
 
-var lyricSong = 'Yeh yeh yeh Em đang nơi nào Can you feel me (nơi nào nơi nào) Can you feel me (nơi nào nơi nào) Yeh yeh yeh Liệu rằng chia tay trong em có quên được câu ca Tình yêu khi xưa em trao cho anh đâu nào phôi pha Đừng lừa dối con tim anh em sẽ không buông tay anh được đâu mà'
+var lyricSong = 'Lời bài hát chưa được cập nhật ! Xin lỗi vì sự bất tiện này ! 💔'
 
 const LibraryScreen = ({ navigation, route, navigation: { goBack } }) => {
+
+
     const song = () => {
-        return (
-            <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('MyMusic', { idMusic: 1, nameMusic: 'Em Của Ngày Hôm Qua', author: 'Sơn Tùng', lyricS : lyricSong } )}>
-                <Image style={styles.songImage} source={require('../images/emcuangayhomqua.png')} />
-                <View style={{ marginLeft: -50, justifyContent: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 17 }}>Em Của Ngày Hôm Qua</Text>
-                    <Text>Sơn Tùng</Text>
-                </View>
-                <TouchableOpacity>
-                    <Image style={styles.songLike} source={require('../images/check.png')} />
+        return songs.map((element, index) => {
+            return (
+                <TouchableOpacity key={index} style={styles.item} onPress={() => navigation.navigate('MyMusic', { idMusic: element.id, nameMusic: element.title, author: element.artist, 
+                url: element.url, artwork: element.artwork, lyricS: lyricSong })}>
+                    <Image style={styles.songImage} source={element.artwork} />
+                    <View style={{ justifyContent: 'center', marginLeft: -50 }}>
+                        <Text style={{ fontWeight: 'bold', fontSize: 17, width: 150 }}>{element.title}</Text>
+                        <Text>{element.artist}</Text>
+                    </View>
+                    <TouchableOpacity>
+                        <Image style={styles.songLike} source={require('../images/check.png')} />
+                    </TouchableOpacity>
                 </TouchableOpacity>
-            </TouchableOpacity>
-        )
+
+
+            )
+        })
     }
     return (
         <View style={styles.container}>
@@ -29,25 +37,10 @@ const LibraryScreen = ({ navigation, route, navigation: { goBack } }) => {
                     <Image style={styles.headerIcon} source={require('../images/share.png')} />
                 </TouchableOpacity>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollV}>
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
-                {song()}
+            <ScrollView style={styles.scrollV}>
+                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    {song()}
+                </View>
             </ScrollView>
         </View>
     )
@@ -76,19 +69,18 @@ const styles = StyleSheet.create({
     scrollV: {
         flex: 1,
         marginTop: 10,
-
     },
     item: {
         height: 80,
+        width: 370,
         flexDirection: 'row',
         justifyContent: 'space-around',
-        flex: 1
         // backgroundColor: '#ff7f50',
     },
     songImage: {
         height: 65,
         width: 65,
-        borderRadius: 50,
+        borderRadius: 15,
         marginVertical: 7.5,
 
     },

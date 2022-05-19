@@ -27,6 +27,7 @@
     "react-native": "0.68.2",
     "react-native-audio": "^4.3.0",
     "react-native-audio-recorder-player": "^3.5.0",
+    "react-native-bluetooth-state": "^2.0.0",
     "react-native-gesture-handler": "~2.2.1",
     "react-native-paper": "^4.12.1",
     "react-native-reanimated": "^2.8.0",
