@@ -47,6 +47,3 @@ const categories = [
 ];
 
 export default categories;
-  // const random = Math.floor(Math.random() * songs.length);
-  // const song = songs[random]
-  // console.log(random, song)

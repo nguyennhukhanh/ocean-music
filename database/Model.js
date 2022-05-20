@@ -48,10 +48,99 @@ const songs = [
     artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2FEm_c%E1%BB%A7a_ng%C3%A0y_h%C3%B4m_qua.png?alt=media&token=84ee4a3d-34c3-44bf-9a00-089ec3e87dc6'},
     url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2FEmCuaNgayHomQua.mp3?alt=media&token=6cb1c7bd-8434-4bc7-9988-7f3eca1e28f4',
   },
+  {
+    id: 8,
+    title: 'Ngày Không Có Em',
+    artist: 'ThịnhK',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2Fngaykhongcoem.png?alt=media&token=c2d2575b-df12-4e40-8897-d9fbcc1efa05'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20NG%C3%80Y%20KH%C3%94NG%20C%C3%93%20EM%20%20Th%E1%BB%8BnK%20Century%20Official.mp3?alt=media&token=a0a62e65-dc45-4a98-a422-b48b414d92df',
+  },
+  {
+    id: 9,
+    title: 'Có Em',
+    artist: 'Madihu feat LowG',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2Fcoem.jpg?alt=media&token=87cdda15-cc4a-404e-b5b3-d1a2c0bde99a'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20Madihu%20%20C%C3%B3%20em%20Feat%20Low%20G%20Official%20MV.mp3?alt=media&token=eee9a9b8-268e-456e-b1bd-e02de7779a58',
+  },
+  {
+    id: 10,
+    title: 'There Is Nothing Holding Me Back',
+    artist: 'Shawn Mendes',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2FNHMB.jpg?alt=media&token=dd1635eb-9333-46a6-b013-154b67c2dadc'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20Shawn%20Mendes%20%20Theres%20Nothing%20Holdin%20Me%20Back.mp3?alt=media&token=3aeba8d8-4b23-4bdf-a88e-dbbbdd1db470',
+  },
+  {
+    id: 11,
+    title: 'Treat U Better',
+    artist: 'Shawn Mendes',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2FSm.jpg?alt=media&token=36551dc4-b3e2-4892-8eee-6b816c2eed23'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20Shawn%20Mendes%20%20Treat%20You%20Better.mp3?alt=media&token=409bb920-250c-461e-bade-8754337a52fc',
+  },
+  {
+    id: 12,
+    title: 'Jopping',
+    artist: 'SuperM',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2Fsuperm.jpg?alt=media&token=f09845c9-d92b-4b95-b09a-03364379a517'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20SuperM%20%EC%8A%88%ED%8D%BC%EC%97%A0%20Jopping%20MV.mp3?alt=media&token=4ffda3cb-ee0e-4b42-b121-b164714ad646',
+  },
+  {
+    id: 13,
+    title: 'Dance The Night Away',
+    artist: 'TWICE',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2F276037051_355015566511136_2762832480430351693_n.jpg?alt=media&token=34c52405-e45a-40ea-ab8b-ed95db5d1309'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20TWICE%20Dance%20The%20Night%20Away%20MV.mp3?alt=media&token=c71a1cfe-6652-44de-98fd-1729e203a5dc',
+  },
+  {
+    id: 14,
+    title: 'The Feels',
+    artist: 'TWICE',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2F161684727_2626201037680258_7516008303813182999_n.jpg?alt=media&token=2476dacb-c59f-49d2-8f63-569d6a68c39d'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20TWICE%20The%20Feels%20MV.mp3?alt=media&token=5a3f7669-6681-449e-8d14-bdaf48452ad3',
+  },
+  {
+    id: 15,
+    title: 'What Is Love',
+    artist: 'TWICE',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2Fminaaa.jpg?alt=media&token=c0fe00de-a25e-49fd-9efa-09f6d7cd1366'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20TWICE%20What%20is%20Love%20MV.mp3?alt=media&token=1fcbb843-4f0c-4b34-9cda-da89c557a04c',
+  },
+  {
+    id: 16,
+    title: 'Hey Kids',
+    artist: 'Nura Ito',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2F871329.jpg?alt=media&token=2022cbe7-aa81-4f79-8804-1f52b2e5b01c'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20%E3%83%8E%E3%83%A9%E3%82%AC%E3%83%9FARAGOTOOP%E3%83%86%E3%83%BC%E3%83%9E%20%20THE%20ORAL%20CIGARETTES%E7%8B%82%E4%B9%B1%20Hey%20KidsMusicVideo.mp3?alt=media&token=90eabd81-f513-476f-b1e3-9b50ee712ec6',
+  },
+  {
+    id: 17,
+    title: 'Jujutsu Kaisen',
+    artist: 'Nura Ito',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2F196789995_2849801725235579_7583480351849812648_n.jpg?alt=media&token=120149d6-148e-41c7-ab04-2f160abf29c8'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20TV%E3%82%A2%E3%83%8B%E3%83%A1%E5%91%AA%E8%A1%93%E5%BB%BB%E6%88%A6%E3%83%8E%E3%83%B3%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88OP%E3%83%A0%E3%83%BC%E3%83%93%E3%83%BC%E7%AC%AC2%E3%82%AF%E3%83%BC%E3%83%ABOP%E3%83%86%E3%83%BC%E3%83%9EWhoya%20ExtendedVIVID%20VICE.mp3?alt=media&token=968587a6-2f13-473c-9233-cf672d73a411',
+  },
+  {
+    id: 18,
+    title: 'Akame Ga Kill',
+    artist: 'Akame',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2Fakame.jpg?alt=media&token=ea570432-83a9-4580-b20a-0df568658aea'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20Akame%20Ga%20Kill.mp3?alt=media&token=8fb340cc-0f23-4475-9bc0-c5e0174b5543',
+  },
+  {
+    id: 19,
+    title: 'SunShine',
+    artist: 'Nura Rihan',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2Frihan.jpg?alt=media&token=ec6d08f6-921d-4d8c-9546-3741ab0221f1'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20Nurarihyon%20no%20Mago%20AMV%20%20Sunshine.mp3?alt=media&token=69bf789b-04a4-4663-9c0a-76bc83e743c1',
+  },
+  {
+    id: 20,
+    title: 'Renai Circulation',
+    artist: 'Kana Hanazawa',
+    artwork: {uri: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/Image%2FIto.jpg?alt=media&token=6e4cf475-3723-4f08-a6cf-689ed523c910'},
+    url: 'https://firebasestorage.googleapis.com/v0/b/musicapp-8c6fe.appspot.com/o/songs%2Fyt1s.com%20-%20Renai%20Circulation%20%20Kana%20Hanazawa%20LYRICS%20Romaji%20%20English.mp3?alt=media&token=3c37b789-934f-46a0-8f50-4826b7809a10',
+  },
+
   
 ];
 
 export default songs;
-// const random = Math.floor(Math.random() * songs.length);
-// const song = songs[random]
-// console.log(random, song)

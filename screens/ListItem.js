@@ -2,10 +2,6 @@ import React from 'react';
 import { View, Text, ToastAndroid, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import songs from '../database/Model';
 
-// const random = Math.floor(Math.random() * songs.length);
-// const songK = songs[random]
-// console.log(random, songK)
-
 var lyricSong = 'Lời bài hát chưa được cập nhật ! Xin lỗi vì sự bất tiện này ! 💕'
 
 const ListItem = ({ navigation, route, navigation: { goBack } }) => {
@@ -13,6 +9,7 @@ const ListItem = ({ navigation, route, navigation: { goBack } }) => {
 
     const song = () => {
         return songs.map((element, index) => {
+            // element.artwork = {uri: element.artwork}
             return (
                 <TouchableOpacity key={index} style={styles.item} onPress={() => navigation.navigate('MyMusic', {
                     idMusic: element.id, nameMusic: element.title, author: element.artist,

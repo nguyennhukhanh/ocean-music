@@ -28,18 +28,19 @@ function Time(d) {
     }
     return "00:00"
 }
-var timeS = 95 //Truyền tham số bên CSDL
+
+// var sum = 0
+// setInterval(count, 1000);
+// function count(i=1) {
+//   sum+=i
+//   console.log(sum)
+// }
+
+var timeS = 1 //Truyền tham số 
 var timeE = 270
 var timeStart = Time(timeS)
 var timeEnd = Time(timeE)
 var countingTime = timeS / timeE
-
-// function playMusic() {
-//     // const [timeStartZ, setTimeStart] = useState(0)
-//     // const [timeEndZ, settimeEnd] = useState(0)
-
-//     console.log('hí ae')
-// }
 
 const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
     //Nhạc
@@ -58,11 +59,11 @@ const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
     async function nextSound() {
         const result = songs.filter(song => song.id != route.params.idMusic)
         // console.log(result);
-    
+
         const random = Math.floor(Math.random() * songs.length);
         const song = songs[random]
         // console.log(random, song)
-    
+        route.params.url = song.url
         route.params.nameMusic = song.title
         route.params.author = song.artist
         route.params.artwork = song.artwork
@@ -76,7 +77,7 @@ const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
         console.log('Next Sound');
         await sound.playAsync();
     }
-    
+
     async function backSound() {
         const result = songs.filter(song => song.id != route.params.idMusic)
         // console.log(result);
@@ -84,7 +85,7 @@ const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
         const random = Math.floor(Math.random() * songs.length);
         const song = songs[random]
         // console.log(random, song)
-
+        route.params.url = song.url
         route.params.nameMusic = song.title
         route.params.author = song.artist
         route.params.artwork = song.artwork
