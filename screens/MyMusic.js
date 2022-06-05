@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Image, ScrollView, Dimensions } from 'react-native';
 import { ProgressBar, Colors } from 'react-native-paper';
-import BluetoothState from 'react-native-bluetooth-state';
 import songs from '../database/Model'
 import { Audio } from 'expo-av';
 
@@ -63,6 +62,7 @@ const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
         const random = Math.floor(Math.random() * songs.length);
         const song = songs[random]
         // console.log(random, song)
+        song.artwork = {uri: song.artwork}
         route.params.url = song.url
         route.params.nameMusic = song.title
         route.params.author = song.artist
@@ -85,6 +85,7 @@ const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
         const random = Math.floor(Math.random() * songs.length);
         const song = songs[random]
         // console.log(random, song)
+        song.artwork = {uri: song.artwork}
         route.params.url = song.url
         route.params.nameMusic = song.title
         route.params.author = song.artist

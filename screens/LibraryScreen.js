@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import songs from '../database/Model';
 
 var lyricSong = 'Lời bài hát chưa được cập nhật ! Xin lỗi vì sự bất tiện này ! 💔'
 
 const LibraryScreen = ({ navigation, route, navigation: { goBack } }) => {
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+    // console.log(data);
 
+    useEffect(() => {
+        fetch('http://192.168.1.7/json/config.php')
+            .then((response) => response.json())
+            .then((json) => setData(json))
+            .catch((error) => console.error(error))
+            .finally(() => setLoading(false));
+    }, []);
 
     const song = () => {
-        return songs.map((element, index) => {
+        return data.map((element, index) => {
             return (
-                <TouchableOpacity key={index} style={styles.item} onPress={() => navigation.navigate('MyMusic', { idMusic: element.id, nameMusic: element.title, author: element.artist, 
-                url: element.url, artwork: element.artwork, lyricS: lyricSong })}>
-                    <Image style={styles.songImage} source={element.artwork} />
+                <TouchableOpacity key={index} style={styles.item} onPress={() => navigation.navigate('MyMusic', {
+                    idMusic: element.id, nameMusic: element.title, author: element.artist,
+                    url: element.url, artwork: { uri: element.artwork }, lyricS: lyricSong
+                })}>
+                    <Image style={styles.songImage} source={{ uri: element.artwork }} />
                     <View style={{ justifyContent: 'center', marginLeft: -50 }}>
                         <Text style={{ fontWeight: 'bold', fontSize: 17, width: 150 }}>{element.title}</Text>
                         <Text>{element.artist}</Text>

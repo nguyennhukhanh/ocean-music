@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, ToastAndroid, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import songs from '../database/Model';
 
 var lyricSong = 'Lời bài hát chưa được cập nhật ! Xin lỗi vì sự bất tiện này ! 💕'
 
 const ListItem = ({ navigation, route, navigation: { goBack } }) => {
 
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+    // console.log(data);
+
+    useEffect(() => {
+        fetch('http://192.168.1.7/json/config.php')
+            .then((response) => response.json())
+            .then((json) => setData(json))
+            .catch((error) => console.error(error))
+            .finally(() => setLoading(false));
+    }, []);
 
     const song = () => {
-        return songs.map((element, index) => {
-            // element.artwork = {uri: element.artwork}
+        return data.map((element, index) => {
             return (
                 <TouchableOpacity key={index} style={styles.item} onPress={() => navigation.navigate('MyMusic', {
                     idMusic: element.id, nameMusic: element.title, author: element.artist,
-                    url: element.url, artwork: element.artwork, lyricS: lyricSong
+                    url: element.url, artwork: { uri: element.artwork }, lyricS: lyricSong
                 })}>
-                    <Image style={styles.songImage} source={element.artwork} />
+                    <Image style={styles.songImage} source={{ uri: element.artwork }} />
                     <View style={{ justifyContent: 'center', marginLeft: -50 }}>
                         <Text style={{ fontWeight: 'bold', fontSize: 17, width: 150 }}>{element.title}</Text>
                         <Text>{element.artist}</Text>
@@ -24,8 +33,6 @@ const ListItem = ({ navigation, route, navigation: { goBack } }) => {
                         <Image style={styles.songLike} source={require('../images/heart.png')} />
                     </TouchableOpacity>
                 </TouchableOpacity>
-
-
             )
         })
     }
@@ -35,23 +42,23 @@ const ListItem = ({ navigation, route, navigation: { goBack } }) => {
                 <TouchableOpacity onPress={() => goBack()}>
                     <Image style={styles.headerIcon} source={require('../images/back.png')} />
                 </TouchableOpacity>
-                <Text style={styles.headerText}>Pop</Text>
+                <Text style={styles.headerText}>Danh Sách</Text>
                 <TouchableOpacity>
                     <Image style={styles.headerIcon} source={require('../images/share.png')} />
                 </TouchableOpacity>
             </View>
             <ScrollView style={styles.scrollV}>
                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <Image style={styles.backgound} source={route.params.categorySrc} />
+                    <Image style={styles.backgound} source={{ uri: route.params.albumImage }} />
                 </View>
                 <View style={{ marginHorizontal: 40 }}>
-                    <Text style={styles.titleX}>{route.params?.categoryName}</Text>
-                    <Text style={{marginBottom: 5, fontWeight: '600'}}>Tuyển tập 2022</Text>
-                    <View style={{flexDirection: 'row', width: 75, justifyContent: 'space-between'}}>
-                        <TouchableOpacity onPress={()=>{ToastAndroid.show("Bạn đã thả tim bộ sưu tập này !", ToastAndroid.SHORT);}}>
+                    <Text style={styles.titleX}>{route.params?.albumName}</Text>
+                    <Text style={{ marginBottom: 5, fontWeight: '600' }}>Tuyển tập 2022</Text>
+                    <View style={{ flexDirection: 'row', width: 75, justifyContent: 'space-between' }}>
+                        <TouchableOpacity onPress={() => { ToastAndroid.show("Bạn đã thả tim bộ sưu tập này !", ToastAndroid.SHORT); }}>
                             <Image style={{ tintColor: 'red', height: 22, width: 22, marginVertical: 10 }} source={require('../images/heart2.png')} />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>{alert('Bạn muốn chia sẻ bộ sưu tập này cho ai hả? Xin lỗi, nhưng tính năng này đang cập nhật ! 💖💖💖')}}>
+                        <TouchableOpacity onPress={() => { alert('Bạn muốn chia sẻ bộ sưu tập này cho ai hả? Xin lỗi, nhưng tính năng này đang cập nhật ! 💖💖💖') }}>
                             <Image style={{ tintColor: 'red', height: 22, width: 22, marginVertical: 10 }} source={require('../images/menu-dots-vertical.png')} />
                         </TouchableOpacity>
                     </View>
