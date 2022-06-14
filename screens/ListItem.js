@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ToastAndroid, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import {TYPE_SONG_CONFIG} from '../database/ipconfig'
 
 var lyricSong = 'Lời bài hát chưa được cập nhật ! Xin lỗi vì sự bất tiện này ! 💕'
 
@@ -10,7 +11,7 @@ const ListItem = ({ navigation, route, navigation: { goBack } }) => {
     // console.log(data);
 
     useEffect(() => {
-        fetch('http://192.168.1.7/json/config.php')
+        fetch(TYPE_SONG_CONFIG)
             .then((response) => response.json())
             .then((json) => setData(json))
             .catch((error) => console.error(error))

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { ScrollView, Text, Dimensions, View, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import {TYPE_ALBUM_CONFIG} from '../database/ipconfig'
 
 const screenWidth = Dimensions.get('window').width
 const screenHeight = Dimensions.get('window').height
@@ -13,7 +14,7 @@ const Slider = () => {
     // console.log(data);
 
     useEffect(() => {
-        fetch('http://192.168.1.7/json/AlbumConfig.php')
+        fetch(TYPE_ALBUM_CONFIG)
             .then((response) => response.json())
             .then((json) => setData(json))
             .catch((error) => console.error(error))

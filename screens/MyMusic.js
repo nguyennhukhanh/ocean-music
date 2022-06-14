@@ -7,6 +7,9 @@ import { Audio } from 'expo-av';
 const screenWidth = Dimensions.get('window').width
 const screenHeight = Dimensions.get('window').height
 
+var isPlaying = false
+var isPaused = false
+
 function Time(d) {
     d = Number(d);
     var h = Math.floor(d / 3600);
@@ -41,32 +44,77 @@ var timeStart = Time(timeS)
 var timeEnd = Time(timeE)
 var countingTime = timeS / timeE
 
+
+
 const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
+    const changeButton = () => {
+        if (isPlaying) {
+            isPlaying = false
+            console.log('btn', isPlaying)
+            return (
+                <View>
+                    <Image style={styles.icon} source={require('../images/stop.png')} />
+                </View>
+            )
+        }
+        else {
+            isPlaying = true
+            console.log('btn', isPlaying)
+            return (
+                <View>
+                    <Image style={styles.icon} source={require('../images/play.png')} />
+                </View>
+            )
+        }
+    }
     //Nhạc
     const [sound, setSound] = React.useState();
+    
+
     async function playSound() {
         console.log('Loading Sound');
         const { sound } = await Audio.Sound.createAsync(
-            { uri: route.params?.url }
-        );
+            { uri: route.params?.url } );
         setSound(sound);
-
+        
+        //Lấy thời lượng
+        sound.getStatusAsync()
+            .then(function (result) {
+                var durations = Math.floor(result.durationMillis/1000)
+                console.log(durations)
+            
+            })
+            .catch(err=>console.log(err));
         console.log('Playing Sound');
-        await sound.playAsync();
+        if (isPlaying) {
+            // isPlaying = false
+            isPaused = true
+            await sound.pauseAsync();
+            //Add className vào@@
+            console.log(isPlaying, 'Đang dừng nhạc')
+
+        }
+        else {
+            // isPlaying = true
+            await sound.playAsync();
+            console.log(isPlaying, 'Đang mở nhạc')
+
+        }
+
     }
-
     async function nextSound() {
-        const result = songs.filter(song => song.id != route.params.idMusic)
-        // console.log(result);
+        isPlaying = true
+        let currentIndex = route.params.idMusic
+        currentIndex++
 
-        const random = Math.floor(Math.random() * songs.length);
-        const song = songs[random]
-        // console.log(random, song)
-        song.artwork = {uri: song.artwork}
+        currentIndex >= songs.length ? currentIndex = 0 : false
+        const song = songs[currentIndex]
+
+        
         route.params.url = song.url
         route.params.nameMusic = song.title
         route.params.author = song.artist
-        route.params.artwork = song.artwork
+        route.params.artwork = { uri: song.artwork }
 
         console.log('Loading Sound');
         const { sound } = await Audio.Sound.createAsync(
@@ -76,20 +124,21 @@ const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
 
         console.log('Next Sound');
         await sound.playAsync();
+        route.params.idMusic = currentIndex
     }
 
     async function backSound() {
-        const result = songs.filter(song => song.id != route.params.idMusic)
-        // console.log(result);
+        isPlaying = true
+        let currentIndex = route.params.idMusic
+        currentIndex--
 
-        const random = Math.floor(Math.random() * songs.length);
-        const song = songs[random]
-        // console.log(random, song)
-        song.artwork = {uri: song.artwork}
+        currentIndex < 0 ? currentIndex = songs.length - 1 : false
+        const song = songs[currentIndex]
+        
         route.params.url = song.url
         route.params.nameMusic = song.title
         route.params.author = song.artist
-        route.params.artwork = song.artwork
+        route.params.artwork = { uri: song.artwork }
 
         console.log('Loading Sound');
         const { sound } = await Audio.Sound.createAsync(
@@ -99,6 +148,7 @@ const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
 
         console.log('Back Sound');
         await sound.playAsync();
+        route.params.idMusic = currentIndex
     }
 
     React.useEffect(() => {
@@ -137,7 +187,7 @@ const MyMusic = ({ navigation, route, navigation: { goBack } }) => {
                         <Image style={styles.icon} source={require('../images/rewind.png')} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={playSound}>
-                        <Image style={styles.icon} source={require('../images/play.png')} />
+                        {changeButton()}
                     </TouchableOpacity>
                     <TouchableOpacity onPress={nextSound}>
                         <Image style={styles.icon} source={require('../images/forward.png')} />
